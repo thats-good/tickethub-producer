@@ -10,6 +10,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 @Getter
 @AllArgsConstructor
 public class SignUpRequestDto {
+    private String name;
     private String id;
     private String pw;
     private String email;
@@ -17,6 +18,7 @@ public class SignUpRequestDto {
 
     public User user(PasswordEncoder passwordEncoder) {
         return User.builder()
+                .name(name)
                 .identifier(id)
                 .password(passwordEncoder.encode(pw))
                 .role(role)
